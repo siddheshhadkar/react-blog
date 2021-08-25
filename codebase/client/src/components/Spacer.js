@@ -1,9 +1,5 @@
-import React from 'react'
+import React from "react";
 
 export default function Spacer() {
-    return (
-        <div style={{height: '15px'}}>
-            
-        </div>
-    )
+  return <div style={{ height: "15px" }}></div>;
 }
