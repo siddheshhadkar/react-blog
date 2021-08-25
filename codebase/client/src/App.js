@@ -1,24 +1,49 @@
-import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import React, { useState, useContext } from "react";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import UserContext from "./context/UserContext";
 
-import Login from "./components/login/Login";
-import LoginNext from "./components/login/LoginNext";
-import Home from "./components/home/Home";
 import ErrorBoundary from "./helper/Error";
+import Header from "./components/header/Header";
+import Blog from "./components/blog/Blog";
+import Blogs from "./components/blog/Blogs";
+import CreateBlog from "./components/blog/CreateBlog";
+import LoginForm from "./components/login/LoginForm";
+import RegisterForm from "./components/register/RegisterForm";
 
 export default function App() {
+  const context = useContext(UserContext);
+  const [isLoggedIn, setIsLoggedIn] = useState(context);
+
+  const toggleLogInState = () => {
+    setIsLoggedIn((prevState) => !prevState);
+  };
+
+  const loggedInComponent = (
+    <Switch>
+      <Route path="/" exact component={Blogs} />
+      <Route path="/create-blog" exact component={CreateBlog} />
+      <Route path="/blog/:id" exact component={Blog} />
+      <Redirect to="/" />
+    </Switch>
+  );
+
+  const loggedOutComponent = (
+    <Switch>
+      <Route path="/login" exact component={LoginForm} />
+      <Route path="/register" exact component={RegisterForm} />
+      <Redirect to="/login" />
+    </Switch>
+  );
+
   return (
     <div>
       <BrowserRouter>
-        {/* <Navbar></Navbar> */}
-        <ErrorBoundary>
-          <Switch>
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/home" component={Home} />
-
-            <Route exact path="*" component={LoginNext} />
-          </Switch>
-        </ErrorBoundary>
+        <Header />
+        <div className="container mt-4">
+          <ErrorBoundary>
+            {context ? loggedInComponent : loggedOutComponent}
+          </ErrorBoundary>
+        </div>
       </BrowserRouter>
     </div>
   );
