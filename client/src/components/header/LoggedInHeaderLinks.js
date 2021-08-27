@@ -4,7 +4,6 @@ import axios from "../../services/axiosConfig";
 
 export default function LoggedInHeaderLinks(props) {
   const [username, setUsername] = useState("");
-  const [image, setImage] = useState(null);
 
   const logOut = () => {
     localStorage.removeItem("token");
@@ -24,7 +23,6 @@ export default function LoggedInHeaderLinks(props) {
     let userResponse = await axios.get("/user", { headers });
     if (userResponse.data.success) {
       setUsername(userResponse.data.data.name);
-      setImage(userResponse.data.data.profile_picture);
     }
   };
 
@@ -33,12 +31,12 @@ export default function LoggedInHeaderLinks(props) {
       <li className="nav-item">
         <div className="nav-link">
           <img
-            src="https://picsum.photos/200/300"
+            src="https://multiplesequity.com/public/images/portfolio/quanitiphi-1578290717.png"
             className="rounded"
-            alt="Profile pic"
+            alt="Company logo"
             style={{
-              height: 28,
-              width: 28,
+              height: 26,
+              width: 82,
             }}
           />
           &nbsp;{username}

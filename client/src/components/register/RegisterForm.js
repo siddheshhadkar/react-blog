@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import validator from "validator";
 import FormData from "form-data";
 
@@ -10,6 +11,7 @@ export default function RegisterForm(props) {
   const [passwordValue, setPasswordValue] = useState("");
   const [phoneNumberValue, setPhoneNumberValue] = useState("");
   const [imageValue, setImageValue] = useState("");
+  const history = useHistory();
 
   const handleNameChange = (e) => {
     setNameValue(e.target.value);
@@ -58,8 +60,10 @@ export default function RegisterForm(props) {
     try {
       let response = await RegisterService(data);
       if (response.success && response.data.msg) {
-        localStorage.setItem("token", response.data.token);
-        props.toggleLogInState();
+        alert("User registration complete.\nLogin now");
+        history.push("/login");
+        // localStorage.setItem("token", response.data.token);
+        // props.toggleLogInState();
       }
     } catch (error) {
       alert(error);
