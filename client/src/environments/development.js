@@ -1,4 +1,4 @@
-const baseUrl = "api/v1";
+const baseUrl = "https://react-blog-qa.herokuapp.com/api/v1";
 
 const config = {
   baseUrl,
