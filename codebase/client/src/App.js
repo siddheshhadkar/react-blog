@@ -1,8 +1,6 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
-import UserContext from "./context/UserContext";
 
-import ErrorBoundary from "./helper/Error";
 import Header from "./components/header/Header";
 import Blog from "./components/blog/Blog";
 import Blogs from "./components/blog/Blogs";
@@ -11,8 +9,7 @@ import LoginForm from "./components/login/LoginForm";
 import RegisterForm from "./components/register/RegisterForm";
 
 export default function App() {
-  const context = useContext(UserContext);
-  const [isLoggedIn, setIsLoggedIn] = useState(context);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const toggleLogInState = () => {
     setIsLoggedIn((prevState) => !prevState);
@@ -29,8 +26,16 @@ export default function App() {
 
   const loggedOutComponent = (
     <Switch>
-      <Route path="/login" exact component={LoginForm} />
-      <Route path="/register" exact component={RegisterForm} />
+      <Route
+        path="/login"
+        exact
+        render={() => <LoginForm toggleLogInState={toggleLogInState} />}
+      />
+      <Route
+        path="/register"
+        exact
+        render={() => <RegisterForm toggleLogInState={toggleLogInState} />}
+      />
       <Redirect to="/login" />
     </Switch>
   );
@@ -38,11 +43,9 @@ export default function App() {
   return (
     <div>
       <BrowserRouter>
-        <Header />
+        <Header isLoggedIn={isLoggedIn} toggleLogInState={toggleLogInState} />
         <div className="container mt-4">
-          <ErrorBoundary>
-            {context ? loggedInComponent : loggedOutComponent}
-          </ErrorBoundary>
+          {isLoggedIn ? loggedInComponent : loggedOutComponent}
         </div>
       </BrowserRouter>
     </div>

@@ -1,12 +1,10 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import UserContext from "../../context/UserContext";
 
 import LoggedInHeaderLinks from "./LoggedInHeaderLinks";
 import LoggedOutHeaderLinks from "./LoggedOutHeaderLinks";
 
-export default function Header() {
-  const context = useContext(UserContext);
+export default function Header(props) {
   const [isCollapsed, setIsCollapsed] = useState(true);
 
   const handleNavCollapse = () => {
@@ -35,7 +33,11 @@ export default function Header() {
           id="navmenu"
         >
           <ul className="navbar-nav ms-auto">
-            {context ? <LoggedInHeaderLinks /> : <LoggedOutHeaderLinks />}
+            {props.isLoggedIn ? (
+              <LoggedInHeaderLinks toggleLogInState={props.toggleLogInState} />
+            ) : (
+              <LoggedOutHeaderLinks />
+            )}
           </ul>
         </div>
       </div>

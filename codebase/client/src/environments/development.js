@@ -1,6 +1,6 @@
-let baseUrl = "http://localhost:5000/";
+const baseUrl = "http://localhost:5000/api/v1";
 
-let updatedConfig = {
-  baseUrl: baseUrl,
+const config = {
+  baseUrl,
 };
-export default updatedConfig;
+export default config;

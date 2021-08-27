@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 export default function BlogCard(props) {
   return (
     <div className="col">
       <Link
-        to={"/blog/" + props.blog.docId}
+        to={"/blog/" + props.blog.id}
         style={{ textDecoration: "none", color: "black" }}
       >
         <div className="card h-100">
@@ -13,10 +13,12 @@ export default function BlogCard(props) {
             <h5 className="card-title">
               {props.blog.title.substring(0, 20)}...
             </h5>
-            <p className="card-text">{props.blog.body.substring(0, 100)}...</p>
+            <p className="card-text">
+              {props.blog.content.substring(0, 100)}...
+            </p>
           </div>
           <div className="card-footer">
-            <small className="text-muted">{props.blog.author}</small>
+            <small className="text-muted">{props.blog.author_name}</small>
           </div>
         </div>
       </Link>

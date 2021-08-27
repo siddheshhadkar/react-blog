@@ -1,6 +1,8 @@
 const fs = require("fs");
 const uuid = require("uuid");
 const { getPasswordHash } = require("./auth");
+const config = require("config");
+const jwt = require("jsonwebtoken");
 
 const DATA_STORE = "./data/users.json";
 
@@ -36,11 +38,22 @@ const registerUser = async (userData) => {
   data.users.push(userData);
 
   if (writeToDataStore(JSON.stringify(data))) {
+    const payload = {
+      user: {
+        email: userData.email,
+        name: userData.name,
+        id: userData.id,
+      },
+    };
+    let tokenVal = jwt.sign(payload, config.get("jwtSecret"), {
+      expiresIn: 360000,
+    });
     return {
       response: {
         data: {
           msg: `User registered with ID ${userData.id}`,
           id: userData.id,
+          token: tokenVal,
         },
         success: true,
       },

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import validator from "validator";
+import LogInService from "../../services/LogInService";
 
-export default function LoginForm() {
+export default function LoginForm(props) {
   const [emailValue, setEmailValue] = useState(null);
   const [passwordValue, setPasswordValue] = useState(null);
 
@@ -19,12 +20,25 @@ export default function LoginForm() {
     } else if (passwordValue.length < 8) {
       alert("Password should contain more than 8 characters");
     } else {
-      loginUser(emailValue, passwordValue);
+      loginUser();
     }
   };
 
-  const loginUser = (email, password) => {
-    // Login logic here
+  const loginUser = async () => {
+    const data = {
+      email: emailValue,
+      password: passwordValue,
+    };
+
+    try {
+      let response = await LogInService(data);
+      if (response.success && response.data.token) {
+        localStorage.setItem("token", response.data.token);
+        props.toggleLogInState();
+      }
+    } catch (error) {
+      alert(error);
+    }
   };
 
   return (
