@@ -5,9 +5,21 @@ const path = require("path");
 const app = express();
 app.use(express.json({ extended: false }));
 app.use(express.static("public"));
+
+const whitelist = [
+  "http://localhost:3000",
+  "https://react-blog-qa.herokuapp.com",
+];
 const corsOptions = {
-  origin: "http://localhost:3000",
-  optionSuccessStatus: 200,
+  origin: function (origin, callback) {
+    console.log("origin:", origin);
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      console.log("origin acceptable");
+      callback(null, true);
+    } else {
+      console.log("origin rejected");
+    }
+  },
 };
 app.use(cors(corsOptions));
 
