@@ -22,11 +22,7 @@ const corsOptions = {
   },
 };
 app.use(cors(corsOptions));
-
 app.use(express.static(path.join(__dirname, "client", "build")));
-app.get("/*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-});
 
 app.get("/", (req, res) => {
   return res.send("Node Assignment");
@@ -35,6 +31,10 @@ app.get("/", (req, res) => {
 app.use("/api/v1/user", require("./routes/api/v1/user"));
 app.use("/api/v1/auth", require("./routes/api/v1/auth"));
 app.use("/api/v1/article", require("./routes/api/v1/article"));
+
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started at port ${PORT}`));

@@ -1,1 +1,12 @@
-{"users":[{"name":"Test User","email":"testuser@email.com","password":"$2a$10$DHoMOWPRFlL.220tSghxAuw6fMTzR./nyYgtTgh.cmXOeE1I0kbqe","phone":"1234567890","profile_picture":"profile_picture-1630066963483.jpg","id":"45dcfa59-4985-420e-9a15-c11f9a7b63cf"},{"name":"Something","email":"something@e.xom","password":"$2a$10$vP6QZmP76Aynhg6VqPyHwewPS/fLHeG9jrmus8c98kQQ1/IMtKvg6","phone":"1233455677","profile_picture":"","id":"a4e8a6f5-e96b-4ca4-86b1-ae5bd206f284"},{"name":"TU2","email":"tu@email.com","password":"$2a$10$u8KaujwS8qlmPjD2H6ZdPea1w4RfWJmEB7xNLPYksdKFGZeStq31i","phone":"1234567890","profile_picture":"","id":"8df75244-1ce3-4cd1-9bf6-ea5d031322be"},{"name":"tes","email":"test@email.com","password":"$2a$10$OCwZb/IhALZU/9PIh3DrROTWrm7L2fXq0Mt16lkU1pGdKSIfqAXta","phone":"1234567489","profile_picture":"","id":"2e7e9beb-a876-4227-8078-374d7c49accb"},{"name":"JohnDoe","email":"john@email.com","password":"$2a$10$US8yvF3cs6Npq7WimgaC3Oo2299I1dJ.J8u/cj0ZCxBwiLym5TKpG","phone":"1234567890","profile_picture":"","id":"a15468e4-e8bc-47fa-af54-63fffb37df4c"},{"name":"gi","email":"gi@email.com","password":"$2a$10$Q057IP.l63zwyPnScDnp.uCGlnPI4I.ybwMjxWidqr6HFONG8uvQC","phone":"1234567890","profile_picture":"","id":"b376c70c-facb-41b8-9f01-8406348d423e"},{"name":"asd","email":"asd@e.com","password":"$2a$10$z3FXt0QEs12DMoMUQzF4KeEXIbMviVo3eJK24QWMY80q5uL.a0MLa","phone":"1234567890","profile_picture":"profile_picture-1630071461238.jpg","id":"e325c403-d9c7-48b0-94de-8f05d7e36664"},{"name":"jane dow","email":"jane@email.com","password":"$2a$10$YSdQrQp15wZ2cv9TY4B/uO.LkeKJ5TuPZ.G4BPha6yq0AhYKOR8Ai","phone":"1234567890","profile_picture":"","id":"cd71299b-5afd-4e72-a5be-3e80f451dee1"},{"name":"Reg","email":"reg@test.com","password":"$2a$10$eOvM4kXWn2oPCoNGE0.QBOza7ELO6wdh4dMin2aBIudnV6Vzul7.O","phone":"1234567890","profile_picture":"profile_picture-1630072252823.jpg","id":"72535adc-60ec-4ba6-b854-bcc9fdef74f8"},{"name":"Some User","email":"someuser@email.com","password":"$2a$10$innEczYOiecQCVomjvkUM.eBVCFqU7z7WrdCzjbtaNQ4DXCumY1Dm","phone":"1234567920","profile_picture":"","id":"c2500ae2-2b97-4578-bb56-a88e71980784"}]}
+{
+  "users": [
+    {
+      "name": "Test User",
+      "email": "testuser@email.com",
+      "password": "$2a$10$DHoMOWPRFlL.220tSghxAuw6fMTzR./nyYgtTgh.cmXOeE1I0kbqe",
+      "phone": "1234567890",
+      "profile_picture": "profile_picture-1630066963483.jpg",
+      "id": "45dcfa59-4985-420e-9a15-c11f9a7b63cf"
+    }
+  ]
+}
